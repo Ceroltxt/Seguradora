@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="forms">
+    <form id="formSeguro">
+
+        <div class="h2"><h2>Calculadora de Seguro</h2></div>
+       <br><br> <br>
+           
+       <div class="casaInputs">
+       <div class="input">
+        <label> Nome do Segurado:
+            <input type="text" id="nome" required>
+        </label>
+    </div> <br>
+
+        <div class="input">
+        <label > Idade:
+            <input type="number" id="idade" required>
+        </label>
+    </div> <br>
+            <div class="input">
+        <label>Estado Civil:
+          
+            <select id="estadocivil">
+            <option value="Solteiro(a)"> Solteiro</option>
+            <option value="Casado(a)">Casado</option>
+           </select>
+
+        </label>
+    </div> <br>
+
+    <div class="input">
+        <label> Número de Motoristas Adicionais:
+            <input type="number" id="motoristasAdicionais" value="0" min="0" required>
+        </label>
+    </div> <br>
+
+        <div class="input">
+        <label>Nome Do Veículo:
+            <input type="text" id="veículo">
+        </label>
+    </div><br>
+
+    <div class="input">
+        <label> Classe Do Veiculo:
+            <select  id="classeVeiculo">
+                <option value="A">Classe A</A></option>
+                <option value="B">Classe B</A></option>
+                <option value="C">Classe C</A></option>
+            </select>
+        </label>
+    </div><br>
+
+        <button type="button" onclick="calcularSeguro()"> Calcular Seguro</button>
+        <br><br><h3>Resultado:</h3> <br>
+        
+        <p id="resultado"></p>
+
+        <div>
+        </div>
+
+
+        </div>
+    
+    </form>
+    
+
+</div>
+</div>
+</body>
+</html>
