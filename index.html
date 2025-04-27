@@ -1,80 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Lista De Compras</title>
 </head>
 <body>
+
+    <div class="background">
+    </div>
+
+    <div class="header">
+        <div class="principalbar">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h1>Lista De Compras</h1>
+            <hr>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="forms">
-    <form id="formSeguro">
+        <ul id="listaDeCompras"></ul>
+        <br><br>
+        <input type="text" id="itemInput" placeholder="Digite o Item">
+        <button id="adicionarItemBtn">Adicionar</button>
+    </div>
 
-        <div class="h2"><h2>Calculadora de Seguro</h2></div>
-       <br><br> <br>
-           
-       <div class="casaInputs">
-       <div class="input">
-        <label> Nome do Segurado:
-            <input type="text" id="nome" required>
-        </label>
-    </div> <br>
+    <script>
+        function iniciarApp() {
+            let listaDeCompras = [];
+            let itensIniciais = ['Arroz', 'Feijão', 'Macarrão'];
+            let listaElement = document.getElementById('listaDeCompras');
+            let botaoAdicionar = document.getElementById('adicionarItemBtn');
+            let campoInput = document.getElementById('itemInput');
 
-        <div class="input">
-        <label > Idade:
-            <input type="number" id="idade" required>
-        </label>
-    </div> <br>
-            <div class="input">
-        <label>Estado Civil:
-          
-            <select id="estadocivil">
-            <option value="Solteiro(a)"> Solteiro</option>
-            <option value="Casado(a)">Casado</option>
-           </select>
+            inicializarLista(itensIniciais);
 
-        </label>
-    </div> <br>
+            botaoAdicionar.addEventListener('click', adicionarMaisItens);
 
-    <div class="input">
-        <label> Número de Motoristas Adicionais:
-            <input type="number" id="motoristasAdicionais" value="0" min="0" required>
-        </label>
-    </div> <br>
+            function inicializarLista(itens) {
+                for (let i = 0; i < itens.length; i++) {
+                    adicionarItem(itens[i]);
+                }
+            }
 
-        <div class="input">
-        <label>Nome Do Veículo:
-            <input type="text" id="veículo">
-        </label>
-    </div><br>
+            function adicionarItem(item) {
+                listaDeCompras.push(item);
+                adicionarItemNoDOM(item);
+            }
 
-    <div class="input">
-        <label> Classe Do Veiculo:
-            <select  id="classeVeiculo">
-                <option value="A">Classe A</A></option>
-                <option value="B">Classe B</A></option>
-                <option value="C">Classe C</A></option>
-            </select>
-        </label>
-    </div><br>
+            function adicionarItemNoDOM(item) {
+                let li = document.createElement('li');
+                li.textContent = item;
+                listaElement.appendChild(li);
+            }
 
-        <button type="button" onclick="calcularSeguro()"> Calcular Seguro</button>
-        <br><br><h3>Resultado:</h3> <br>
-        
-        <p id="resultado"></p>
+            function adicionarMaisItens() {
+                if (listaDeCompras.length >= 5) {
+                    alert('Sua lista já está completa.');
+                    return;
+                }
 
-        <div>
-        </div>
+                let novoItem = campoInput.value.trim();
+                if (novoItem === '') {
+                    alert('Digite um item válido.');
+                    return;
+                }
 
+                adicionarItem(novoItem);
+                campoInput.value = '';
+                campoInput.focus();
 
-        </div>
+                alert('Item Adicionado com sucesso!');
+            }
+        }
+
+        iniciarApp(); 
+    </script>
     
-    </form>
-    
-
-</div>
-</div>
 </body>
 </html>
